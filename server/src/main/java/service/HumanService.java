@@ -142,6 +142,7 @@ public class HumanService extends Database implements HumanDAO {
             statement.setString(12, login);
             result = statement.executeQuery().next();
         } catch (SQLException throwables) {
+            System.out.println(throwables);
             LOGGER.warning("Ошибка при обращении к базе данных при обновлении человека.");
         } finally {
             closeStatement(statement);
@@ -211,7 +212,7 @@ public class HumanService extends Database implements HumanDAO {
         READ_ALL("select * from humans;"),
         REMOVE_BY_NAME("delete from humans where name = ?;"),
         UPDATE_BY_ID("update humans set name = ?, x = ?, y = ?, creation_date = ?, real_hero = ?, has_toothpick = ?, "
-                + "impact_speed = ?, weapon_type = ?, mood = ?, car_cool = ?, where id = ? and login = ? returning id;"),
+                + "impact_speed = ?, weapon_type = ?, mood = ?, car_cool = ? where id = ? and login = ? returning id;"),
         REMOVE_BY_ID("delete from humans where id = ? and login = ? returning id;"),
         CLEAR_BY_USER("delete from humans where login = ? returning id;"),
         REMOVE_LOWER("delete from humans where name < ? and login = ? returning id;"),

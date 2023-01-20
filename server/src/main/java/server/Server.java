@@ -21,7 +21,7 @@ public class Server {
     public Server() {
         try{
             System.out.println("Сервер начал свою работу.");
-            int PORT = 9007;
+            int PORT = 9011;
             serverSocketChannel = ServerSocketChannel.open();
             selector = Selector.open();
             serverSocketChannel.configureBlocking(false);
